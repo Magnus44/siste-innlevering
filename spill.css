@@ -1,0 +1,103 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("bilder/bakgrunn.png");
+    background-size: cover;
+}
+
+canvas {
+    /* width: 1340px;
+    height: 715px; */
+    background-color: white;
+    border: 5px solid black;
+    margin: 50px;
+    position: relative; /* For å gi referansepunkt for absolutt posisjonering */
+}
+
+#startboks {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px;
+}
+#startContent {
+    background-image: url("bilder/bakgrunn.png");
+    background-size: cover;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 3px solid #888;
+    width: 800px; 
+    height: 500px;
+    text-align: center;
+    color: aliceblue;
+}
+.inputField {
+    margin: 10px 0;
+    width: 100%;
+    padding: 10px;
+}
+.button {
+    padding: 10px 20px;
+    font-size: 40px;
+    background-color: #7600ca;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#blue {
+    display: flex;
+    background-color: blue;
+    border: 2px solid black;
+    padding: 20px;
+    width: 500px;
+    margin: 10px;
+    justify-content: center;
+}
+
+#score {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(213, 123, 255);
+    border: 2px  solid black;
+    width: 300px;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#red {
+    display: flex;
+    background-color: red;
+    border: 2px solid black;
+    padding: 20px;
+    width: 500px;
+    margin: 10px;
+    justify-content: center;
+    
+
+}
+
+header {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+header p {
+    font-size: 40px;
+}
+

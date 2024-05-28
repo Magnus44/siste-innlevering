@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>air hockey</title>
+    <link rel="stylesheet" href="spill.css">
+</head>
+<body>
+
+    <header>
+        <div id="blue">
+            <p id="spiller1">Blå</p>
+
+        </div>
+
+        <div id="score">
+            <p><span id="redgoal">0</span> - <span id="bluegoal">0</span></p>
+            <div id="timer"></div>
+        </div>
+
+        <div id="red">
+            <p id="spiller2">Rød</p>
+        </div>
+        
+       
+
+    </header>
+
+    <div id="startboks">
+        <div id="startContent">
+            <h1>Velkommen til Air Hockey!</h1>
+            <p>Skriv inn navnene deres:</p>
+            <input id="player1" class="inputField" type="text" placeholder="Spiller 1 (Blå)">
+            <input id="player2" class="inputField" type="text" placeholder="Spiller 2 (Rød)">
+            <button id="startButton" class="button">Start spill</button>
+        </div>
+    </div>
+
+    <canvas id="canvas"></canvasr>
+
+
+    <script src="spill.js"></script>
+</body>
+</html>
