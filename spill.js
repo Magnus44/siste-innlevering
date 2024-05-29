@@ -188,7 +188,7 @@ function countdown(minutes, seconds) {
                     countdown(minutes - 1, 59);
                 }, 1000);
             }
-        }
+        } 
     }
     tick();
 }
@@ -281,10 +281,10 @@ function updateItems() {
     }
 }
 let trueFalse = true
-function fjernSenereTrue(){
+function fpsTestTrue(){
     trueFalse = false
 }
-function fjernSenere(){
+function fpsTest(){
     if(trueFalse){
     console.log("update")
     }
@@ -305,8 +305,8 @@ function update() {
     drawPusher2();
     updateScore()
 
-    fjernSenere()
-    setTimeout(fjernSenereTrue, 1000)
+    fpsTest()
+    setTimeout(fpsTestTrue, 1000)
     
 
 
@@ -334,3 +334,9 @@ update();
 window.onload = () => {
     document.getElementById('startboks').style.display = 'block';
 };
+
+
+// postHS("Magnus", 200)
+getHS()
+
+
