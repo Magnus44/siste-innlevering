@@ -183,12 +183,12 @@ function countdown(minutes, seconds) {
         if (seconds >= 0) {
             Nedtelling = setTimeout(tick, 1000);
         } else {
-            if (minutes >= 1) { 
+            if (minutes >= 1) {
                 setTimeout(function () {
                     countdown(minutes - 1, 59);
                 }, 1000);
             }
-        } 
+        }
     }
     tick();
 }
@@ -281,12 +281,12 @@ function updateItems() {
     }
 }
 let trueFalse = true
-function fpsTestTrue(){
+function fpsTestTrue() {
     trueFalse = false
 }
-function fpsTest(){
-    if(trueFalse){
-    console.log("update")
+function fpsTest() {
+    if (trueFalse) {
+        console.log("update")
     }
 }
 
@@ -307,10 +307,10 @@ function update() {
 
     fpsTest()
     setTimeout(fpsTestTrue, 1000)
-    
 
 
- 
+
+
 
     requestAnimationFrame(update);
 }
@@ -325,7 +325,7 @@ document.getElementById('startButton').addEventListener('click', () => {
     document.getElementById('spiller2').innerText = player2Name;
     document.getElementById('startboks').style.display = 'none';
 
-    
+
 });
 
 
