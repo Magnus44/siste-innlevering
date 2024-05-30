@@ -211,12 +211,12 @@ function updateItems() {
 
     // Sjekk om ballen går i målet
     if (ball.x <= GOAL_WIDTH && ball.y + ball.height / 2 >= CANVAS_HEIGHT / 2 - GOAL_HEIGHT / 2 && ball.y + ball.height / 2 <= CANVAS_HEIGHT / 2 + GOAL_HEIGHT / 2) {
-        blueScore++;
+        redScore++;
         resetBall();
     }
 
     if (ball.x + ball.width >= CANVAS_WIDTH - GOAL_WIDTH && ball.y + ball.height / 2 >= CANVAS_HEIGHT / 2 - GOAL_HEIGHT / 2 && ball.y + ball.height / 2 <= CANVAS_HEIGHT / 2 + GOAL_HEIGHT / 2) {
-        redScore++;
+        blueScore++;
         resetBall();
     }
 
