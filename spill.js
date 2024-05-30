@@ -94,40 +94,53 @@ function updateScore() {
     document.getElementById('redgoal').innerText = blueScore;
     document.getElementById('bluegoal').innerText = redScore;
 }
-// Behandler tastetrykk
+
+
+let nedtellingStartet = false;
+
 function keydownHandler(event) {
     const key = event.key.toLowerCase(); // Konverter til små bokstaver
 
+
+    if (!nedtellingStartet) {
+        return;
+    }
+
     if (key === "w") {
-        pusher1.y_velocity = -7; // Beveg oppover
+        pusher1.y_velocity = -7; 
     } else if (key === "s") {
-        pusher1.y_velocity = 7; // Beveg nedover
+        pusher1.y_velocity = 7;
     } else if (key === "a") {
-        pusher1.x_velocity = -7; // Beveg til venstre
+        pusher1.x_velocity = -7; 
     } else if (key === "d") {
-        pusher1.x_velocity = 7; // Beveg til høyre
+        pusher1.x_velocity = 7; 
     } else if (key === "arrowup") {
-        pusher2.y_velocity = -7; // Beveg oppover
+        pusher2.y_velocity = -7; 
     } else if (key === "arrowdown") {
-        pusher2.y_velocity = 7; // Beveg nedover
+        pusher2.y_velocity = 7; 
     } else if (key === "arrowleft") {
-        pusher2.x_velocity = -7; // Beveg til venstre
+        pusher2.x_velocity = -7; 
     } else if (key === "arrowright") {
-        pusher2.x_velocity = 7; // Beveg til høyre
+        pusher2.x_velocity = 7; 
     }
 }
 
 function keyupHandler(event) {
     const key = event.key.toLowerCase();
 
+
+    if (!nedtellingStartet) {
+        return;
+    }
+
     if (key === "w" || key === "s") {
-        pusher1.y_velocity = 0; // Stopp vertikal bevegelse
+        pusher1.y_velocity = 0; 
     } else if (key === "a" || key === "d") {
-        pusher1.x_velocity = 0; // Stopp horisontal bevegelse
+        pusher1.x_velocity = 0; 
     } else if (key === "arrowup" || key === "arrowdown") {
-        pusher2.y_velocity = 0; // Stopp vertikal bevegelse
+        pusher2.y_velocity = 0; 
     } else if (key === "arrowleft" || key === "arrowright") {
-        pusher2.x_velocity = 0; // Stopp horisontal bevegelse
+        pusher2.x_velocity = 0; 
     }
 }
 
@@ -193,7 +206,7 @@ function countdown(minutes, seconds) {
     tick();
 }
 
-countdown(2, 0);
+
 
 function resetBall() {
     ball.x = CANVAS_WIDTH / 2 - ball.width / 2;
@@ -243,19 +256,19 @@ function updateItems() {
 
     // Sjekk grenser for pusher 1
     if (pusher1.x + pusher1.width > CANVAS_WIDTH / 2) {
-        pusher1.x = CANVAS_WIDTH / 2 - pusher1.width; // Hindre at pusher går over midtlinjen
+        pusher1.x = CANVAS_WIDTH / 2 - pusher1.width; 
         pusher1.x_velocity = 0;
     }
     if (pusher1.x < 0) {
-        pusher1.x = 0; // Hindre at pusher går utenfor venstre vegg
+        pusher1.x = 0; 
         pusher1.x_velocity = 0;
     }
     if (pusher1.y + pusher1.height > CANVAS_HEIGHT) {
-        pusher1.y = CANVAS_HEIGHT - pusher1.height; // Hindre at pusher går utenfor nedre vegg
+        pusher1.y = CANVAS_HEIGHT - pusher1.height; 
         pusher1.y_velocity = 0;
     }
     if (pusher1.y < 0) {
-        pusher1.y = 0; // Hindre at pusher går utenfor øvre vegg
+        pusher1.y = 0; 
         pusher1.y_velocity = 0;
     }
 
@@ -264,19 +277,19 @@ function updateItems() {
 
     // Sjekk grenser for pusher 2
     if (pusher2.x < CANVAS_WIDTH / 2) {
-        pusher2.x = CANVAS_WIDTH / 2; // Hindre at pusher går over midtlinjen
+        pusher2.x = CANVAS_WIDTH / 2; 
         pusher2.x_velocity = 0;
     }
     if (pusher2.x + pusher2.width > CANVAS_WIDTH) {
-        pusher2.x = CANVAS_WIDTH - pusher2.width; // Hindre at pusher går utenfor høyre vegg
+        pusher2.x = CANVAS_WIDTH - pusher2.width; 
         pusher2.x_velocity = 0;
     }
     if (pusher2.y + pusher2.height > CANVAS_HEIGHT) {
-        pusher2.y = CANVAS_HEIGHT - pusher2.height; // Hindre at pusher går utenfor nedre vegg
+        pusher2.y = CANVAS_HEIGHT - pusher2.height; 
         pusher2.y_velocity = 0;
     }
     if (pusher2.y < 0) {
-        pusher2.y = 0; // Hindre at pusher går utenfor øvre vegg
+        pusher2.y = 0; 
         pusher2.y_velocity = 0;
     }
 }
@@ -324,6 +337,10 @@ document.getElementById('startButton').addEventListener('click', () => {
     document.getElementById('spiller1').innerText = player1Name;
     document.getElementById('spiller2').innerText = player2Name;
     document.getElementById('startboks').style.display = 'none';
+    setTimeout(() => {
+        countdown(2, 0);
+        nedtellingStartet = true;
+    }, 4000); 
 
 
 });
