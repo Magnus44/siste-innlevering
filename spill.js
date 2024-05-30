@@ -3,8 +3,8 @@ const CANVAS_WIDTH = 1330;
 const PUCK_SIZE = 75;
 const PUSHER_SIZE = 120;
 const MIDDLE_LINE_WIDTH = 4;
-const GOAL_WIDTH = 200;
-const GOAL_HEIGHT = 100;
+const GOAL_WIDTH = 10;
+const GOAL_HEIGHT = 150;
 const friksjon = 0.993;
 
 const canvas = document.getElementById("canvas");
@@ -210,13 +210,13 @@ function updateItems() {
     ball.y_velocity *= friksjon;
 
     // Sjekk om ballen går i målet
-    if (ball.x <= 10 && ball.y >= CANVAS_HEIGHT / 2 - GOAL_HEIGHT / 2 && ball.y <= CANVAS_HEIGHT / 2 + GOAL_HEIGHT / 2) {
-        redScore++;
+    if (ball.x <= GOAL_WIDTH && ball.y + ball.height / 2 >= CANVAS_HEIGHT / 2 - GOAL_HEIGHT / 2 && ball.y + ball.height / 2 <= CANVAS_HEIGHT / 2 + GOAL_HEIGHT / 2) {
+        blueScore++;
         resetBall();
     }
 
-    if (ball.x + ball.width >= CANVAS_WIDTH - 10 && ball.y >= CANVAS_HEIGHT / 2 - GOAL_HEIGHT / 2 && ball.y <= CANVAS_HEIGHT / 2 + GOAL_HEIGHT / 2) {
-        blueScore++;
+    if (ball.x + ball.width >= CANVAS_WIDTH - GOAL_WIDTH && ball.y + ball.height / 2 >= CANVAS_HEIGHT / 2 - GOAL_HEIGHT / 2 && ball.y + ball.height / 2 <= CANVAS_HEIGHT / 2 + GOAL_HEIGHT / 2) {
+        redScore++;
         resetBall();
     }
 
