@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url("bilder/bakgrunn.png");
+    background-image: url("../bilder/bakgrunn.png");
     background-size: cover;
 }
 
@@ -34,7 +34,7 @@ canvas {
 }
 
 #startContent {
-    background-image: url("bilder/bakgrunn.png");
+    background-image: url("../bilder/bakgrunn.png");
     background-size: cover;
     margin: 5% auto;
     padding: 20px;
@@ -53,7 +53,7 @@ canvas {
 
 .button {
     padding: 10px 20px;
-    font-size: 40px;
+    font-size: 30px;
     background-color: #7600ca;
     color: white;
     border: none;
@@ -121,7 +121,7 @@ header p {
 }
 
 #endContent {
-    background-image: url("bilder/bakgrunn.png");
+    background-image: url("../bilder/bakgrunn.png");
     background-size: cover;
     margin: 5% auto;
     padding: 20px;

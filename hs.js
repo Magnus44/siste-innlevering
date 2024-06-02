@@ -1,40 +1,47 @@
 const URL = "https://rasmusweb.no/hs.php"
 const GameID = "MagnusAirHockey44"
 
-let currentHS = 0
-let currentHSPlayerName = 0
-
-async function getHS() {
-    const requestOptions = {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-        },
-    }
-
-    const apiCallPromise = await fetch(URL + "?id=" + GameID, requestOptions)
-
-    // htmlObj.innerHTML = ""
-    // appendPElm(htmlObj, "StatusCodeOK: " + apiCallPromise.ok)
-
+const requestOptions = {
+    method: "GET",
+    headers: {
+        Accept: "application/json",
+    },
+}
+ 
+let playerArr = []
+//henter
+async function getRequest(gameId, i) {
+ 
+    const apiCallPromise = await fetch(URL + "?id=" + gameId, requestOptions)
+ 
+  console.log("StatusCodeOK: " + apiCallPromise.ok)
+ 
     // Getting the json from the response (NOTE: Also await!)
     const json = await apiCallPromise.json()
     console.log(json)
-    currentHS = json.hs
-    currentHSPlayerName = json.player
-    // TODO: Legg til disse i HTML doc på rett sted
-    
-
+    console.log(json.hs)
+    console.log(json.player)
+ 
+   
+ 
+ 
+    let player = {
+        name: json.player,
+        hs: json.hs,
+        gameID: gameId
+    };
+ 
+    playerArr.push(player);
+ 
 }
-
-// Poster ny HS til php backend
-async function postHS(playerName, hs) {
-
+ 
+//legger til info
+async function postRequest(pScore, pName) {
     postBody = {}
-    postBody.id = GameID
-    postBody.hs = hs
-    postBody.player = playerName
-
+    postBody.id = playerArr[4].gameID
+    postBody.hs = pScore
+    postBody.player = pName
+ 
     const apiCallPromise = await fetch(URL, {
         method: "POST",
         headers: {
@@ -42,14 +49,23 @@ async function postHS(playerName, hs) {
         },
         body: JSON.stringify(postBody),
     })
-
-
-    //  appendPElm(htmlObj, "StatusCodeOK: " + apiCallPromise.ok)
-
+ 
     // Getting the json from the response:
     const responseJson = await apiCallPromise.json()
     console.log(responseJson)
-
-    // appendPElm(htmlObj, "Response: " + responseJson)
 }
-
+ 
+ 
+pullNames()
+ 
+function pullNames() {
+    for (let i = 0; i < 5; i++) {
+        getRequest(GameID + i, i)
+    }
+ 
+    setTimeout(function() {
+        playerArr.sort((a, b) => b.hs - a.hs);
+        console.log(playerArr)
+    }, 1000);
+}
+ 

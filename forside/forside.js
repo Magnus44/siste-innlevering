@@ -16,3 +16,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+document.getElementById("tilSpillet").addEventListener("click", function(){
+    document.location = "../spill/index.html";
+});
+
+document.getElementById("tilLeaderboard").addEventListener("click", function(){
+    document.location = "../leaderboard/leaderboard.html";
+});
+
+    

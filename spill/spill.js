@@ -186,7 +186,9 @@ function handleCollision(ball, pusher) {
     }
 }
 
-let Nedtelling;
+let countdownInterval;
+let gameEnded = false;
+
 function countdown(minutes, seconds) {
     function tick() {
         var teller = document.getElementById("timer");
@@ -200,6 +202,8 @@ function countdown(minutes, seconds) {
                 setTimeout(function () {
                     countdown(minutes - 1, 59);
                 }, 1000);
+            } else {
+                endGame()
             }
         }
     }
@@ -328,6 +332,49 @@ function update() {
     requestAnimationFrame(update);
 }
 
+function endGame() {
+    clearTimeout(Nedtelling)
+    nedtellingStartet = false
+
+    let playerName, score
+    if (blueScore > redScore) {
+        playerName = player1Name
+        score = blueScore - redScore
+    } else {
+        playerName = player2Name
+        score = redScore - blueScore
+    }
+
+    checkHigh()
+    // Send high score og player til API-et
+
+    document.getElementById('endboks').style.display = 'block'
+    document.getElementById('startButton').addEventListener('click', () => {
+        document.getElementById('endboks').style.display = 'none'
+        location.reload() // Restart the game
+    })
+}
+
+function checkHigh() {
+    setTimeout(function () {
+        if (score > playerArr[4].hs) {
+            postRequest(score, playerName)
+        }
+ 
+        playerArr = []
+        pullNames()
+    }, 1000);
+}
+
+
+document.getElementById("tilbake").addEventListener("click", function(){
+    document.location = "../forside/forside.html";
+});
+
+
+document.getElementById("tilLeaderboard").addEventListener("click", function(){
+    document.location = "../leaderboard/leaderboard.html";
+});
 
 document.getElementById('startButton').addEventListener('click', () => {
     player1Name = document.getElementById('player1').value || 'Blå Spiller';
@@ -340,6 +387,7 @@ document.getElementById('startButton').addEventListener('click', () => {
     setTimeout(() => {
         countdown(2, 0);
         nedtellingStartet = true;
+        gameEnded = false; // Reset game ended flag for a new game
     }, 4000); 
 
 
@@ -350,10 +398,7 @@ update();
 
 window.onload = () => {
     document.getElementById('startboks').style.display = 'block';
-};
-
+}
 
 // postHS("Magnus", 200)
-getHS()
-
 

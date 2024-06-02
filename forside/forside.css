@@ -31,7 +31,7 @@ nav ul li {
     margin: 0 16px;
 }
 
-nav ul li a {
+nav ul li a, button{
     color: #00a8fc;
     text-decoration: none;
     font-weight: bold;
@@ -39,10 +39,15 @@ nav ul li a {
     transition: background 0.3s, color 0.3s;
 }
 
-nav ul li a:hover, nav ul li a.active {
+nav ul li a:hover, nav ul li a.active, button:hover {
     background: #00aaff;
     color: #fff;
     border-radius: 5px;
+}
+
+button {
+    background-color: white;
+    border: none;
 }
 
 main {
