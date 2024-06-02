@@ -48,9 +48,9 @@ const pusher2 = {
     img: new Image()
 };
 
-ball.img.src = "bilder/puck.png";
-pusher1.img.src = "bilder/pusher2.png";
-pusher2.img.src = "bilder/pusher2.png";
+ball.img.src = "../bilder/puck.png";
+pusher1.img.src = "../bilder/pusher2.png";
+pusher2.img.src = "../bilder/pusher2.png";
 
 function drawField() {
     ctx.fillStyle = "rgba(255, 0, 0, 0.9)";
