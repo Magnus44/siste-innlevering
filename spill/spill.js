@@ -99,12 +99,10 @@ function updateScore() {
 let nedtellingStartet = false;
 
 function keydownHandler(event) {
-    const key = event.key.toLowerCase(); // Konverter til små bokstaver
-
-
-    if (!nedtellingStartet) {
+    if(!event.key || !nedtellingStartet) {
         return;
     }
+    const key = event.key.toLowerCase(); // Konverter til små bokstaver
 
     if (key === "w") {
         pusher1.y_velocity = -7; 
@@ -126,12 +124,10 @@ function keydownHandler(event) {
 }
 
 function keyupHandler(event) {
-    const key = event.key.toLowerCase();
-
-
-    if (!nedtellingStartet) {
+    if(!event.key || !nedtellingStartet) {
         return;
     }
+    const key = event.key.toLowerCase();
 
     if (key === "w" || key === "s") {
         pusher1.y_velocity = 0; 
@@ -331,13 +327,15 @@ function update() {
 
     requestAnimationFrame(update);
 }
+let playerName = 0
+let score = 0
 
 function endGame() {
     clearTimeout(Nedtelling)
     nedtellingStartet = false
 
-    let playerName, score
     if (blueScore > redScore) {
+        console.log("det funker")
         playerName = player1Name
         score = blueScore - redScore
     } else {
@@ -345,7 +343,7 @@ function endGame() {
         score = redScore - blueScore
     }
 
-    checkHigh()
+    checkHigh(playerName, score)
     // Send high score og player til API-et
 
     document.getElementById('endboks').style.display = 'block'
@@ -355,10 +353,13 @@ function endGame() {
     })
 }
 
-function checkHigh() {
+function checkHigh(pName, pScore) {
+    console.log("det funker")
+    console.log(pName)
+    console.log(pScore)
     setTimeout(function () {
-        if (score > playerArr[4].hs) {
-            postRequest(score, playerName)
+        if (pScore > playerArr[4].hs) {
+            postRequest(pScore, pName)
         }
  
         playerArr = []

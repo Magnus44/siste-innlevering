@@ -55,6 +55,14 @@ async function postRequest(pScore, pName) {
     console.log(responseJson)
 }
  
+function pushNames() {
+    postRequest(1, "Kevin")
+    postRequest(2, "Dave")
+    postRequest(3, "Henrik")
+    postRequest(4, "Magnus")
+    postRequest(5, "Alex")
+}
+
  
 pullNames()
  
@@ -68,4 +76,3 @@ function pullNames() {
         console.log(playerArr)
     }, 1000);
 }
- 
