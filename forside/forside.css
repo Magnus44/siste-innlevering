@@ -48,6 +48,7 @@ nav ul li a:hover, nav ul li a.active, button:hover {
 button {
     background-color: white;
     border: none;
+    font-size: 17px;
 }
 
 main {
